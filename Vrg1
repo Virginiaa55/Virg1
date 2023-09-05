@@ -1,0 +1,44 @@
+class Task:
+    def __init__(self, task_name, due_date):
+        self.task_name = task_name
+        self.due_date = due_date
+
+class Agenda:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+
+    def remove_task(self, task_name):
+        for task in self.tasks:
+            if task.task_name == task_name:
+                self.tasks.remove(task)
+                break
+
+    def display_tasks(self):
+        if self.tasks:
+            for task in self.tasks:
+                print("Task:", task.task_name)
+                print("Due Date:", task.due_date)
+                print("-----------")
+        else:
+            print("No tasks found.")
+
+# Create an instance of the Agenda class
+agenda = Agenda()
+
+# Add tasks to the agenda
+task1 = Task("Complete Python program", "2022-08-15")
+task2 = Task("Submit biology assignment", "2022-08-20")
+agenda.add_task(task1)
+agenda.add_task(task2)
+
+# Display all tasks in the agenda
+agenda.display_tasks()
+
+# Remove a task from the agenda
+agenda.remove_task("Complete Python program")
+
+# Display updated list of tasks
+agenda.display_tasks()
